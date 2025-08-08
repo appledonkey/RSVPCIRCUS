@@ -3,141 +3,139 @@
 <head>
 <meta charset="UTF-8">
 <title>Circus Birthday RSVP</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 <style>
   body {
-    font-family: Arial, sans-serif;
-    background: #fff8f0;
+    font-family: 'Poppins', sans-serif;
+    background: #fffaf4;
     color: #333;
-    padding: 1rem;
     max-width: 700px;
-    margin: auto;
+    margin: 0 auto;
+    padding: 1rem;
+    line-height: 1.6;
   }
-  img {
-    max-width: 100%;
-    border-radius: 10px;
-  }
-  h1, h2 {
+  h1 {
     text-align: center;
-    color: #b30000;
+    font-size: 2rem;
+    color: #d6336c;
+    margin-bottom: 0.5rem;
   }
-  form {
+  .intro {
     background: #fff3e0;
+    border: 2px dashed #f08c00;
     padding: 1rem;
     border-radius: 8px;
-    margin-top: 1rem;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    margin-bottom: 1.5rem;
+  }
+  .intro p {
+    margin: 0.5rem 0;
+  }
+  form {
+    background: #ffffff;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
   }
   label {
-    font-weight: bold;
     display: block;
-    margin-top: 0.5rem;
+    margin-top: 1rem;
+    font-weight: 600;
   }
-  input, select, textarea {
+  input, select, textarea, button {
     width: 100%;
-    padding: 0.5rem;
-    margin-top: 0.2rem;
-    border-radius: 4px;
+    padding: 0.6rem;
+    margin-top: 0.3rem;
+    border-radius: 6px;
     border: 1px solid #ccc;
+    font-family: inherit;
     font-size: 1rem;
+  }
+  input:focus, select:focus, textarea:focus {
+    border-color: #d6336c;
+    outline: none;
   }
   button {
-    margin-top: 1rem;
-    background: #b30000;
+    background: #d6336c;
     color: white;
+    font-weight: 600;
     border: none;
-    padding: 0.75rem;
-    font-size: 1rem;
-    border-radius: 4px;
     cursor: pointer;
+    margin-top: 1rem;
+    transition: background 0.2s;
   }
   button:hover {
-    background: #800000;
+    background: #b02654;
   }
   .success {
-    background: #d4edda;
-    color: #155724;
-    padding: 0.75rem;
+    background: #d1e7dd;
+    color: #0f5132;
+    padding: 0.8rem;
+    border-radius: 6px;
     margin-top: 1rem;
-    border-radius: 4px;
-  }
-  .error {
-    background: #f8d7da;
-    color: #721c24;
-    padding: 0.75rem;
-    margin-top: 1rem;
-    border-radius: 4px;
+    border: 1px solid #badbcc;
   }
 </style>
 </head>
 <body>
 
-<h1>🎪🎉 Circus Birthday Extravaganza!</h1>
-<img src="https://i.imgur.com/zievjSt.png" alt="Circus Invitation">
+<h1>🎪 You're Invited! 🎉</h1>
 
-<p>🎪🎉 LAAAAAADIES AND GENTLEMEN! BOYS AND GIRLS! CHILDREN OF ALL AGES! Step right up for the most spectacular celebration under the big top! Three dazzling ringmasters Judge turning 1, August turning 2, and Olivia turning 4 are ready to amaze and delight you with an afternoon of laughter, games, treats, and jaw dropping surprises.</p>
+<div class="intro">
+  <p><strong>LAAAAAADIES AND GENTLEMEN! BOYS AND GIRLS! CHILDREN OF ALL AGES!</strong></p>
+  <p>Step right up for the most spectacular celebration under the big top! Three dazzling ringmasters — <strong>Judge</strong> turning 1, <strong>August</strong> turning 2, and <strong>Olivia</strong> turning 4 — are ready to amaze and delight you with an afternoon of laughter, games, treats, and jaw-dropping surprises.</p>
+  <p>Your presence is the main event and presents are absolutely <em>not</em> required. If the gifting spirit has you juggling ideas, simply spoil the birthday star you know best and cheer wildly for the rest.</p>
+  <p>This will be a day of magic, memories, and mayhem you will not want to miss! 🎈🍿🎟️</p>
+</div>
 
-<p>Your presence is the main event and presents are absolutely not required. If the gifting spirit has you juggling ideas, simply spoil the birthday star you know best and cheer wildly for the rest. This will be a day of magic, memories, and mayhem you will not want to miss! 🎈🍿🎟️</p>
+<!-- Hidden iframe -->
+<iframe name="rsvp_sink" style="display:none;" onload="rsvpOk()"></iframe>
 
-<h2>RSVP</h2>
-<form id="rsvpForm">
+<form id="rsvpForm"
+      action="https://script.google.com/macros/s/AKfycbz8B7g14P7GzrU_kVojoVpfrgz0Zi3fOH61LcCbPpzmop_h6Yqsg9gSDPDPofwTb7YJ/exec"
+      method="POST"
+      target="rsvp_sink">
   <input type="hidden" name="event" value="Circus Birthday">
-  
-  <label for="name">Your Name</label>
-  <input type="text" id="name" name="name" required>
-  
-  <label for="email">Email Address</label>
-  <input type="email" id="email" name="email" required>
-  
-  <label for="attendance">Will you attend?</label>
-  <select id="attendance" name="attendance" required>
+
+  <label>Your Name</label>
+  <input name="name" required>
+
+  <label>Email</label>
+  <input type="email" name="email" required>
+
+  <label>Will you attend?</label>
+  <select name="attendance" required>
     <option value="">-- Select --</option>
     <option value="Yes">Yes</option>
     <option value="No">No</option>
+    <option value="Maybe">Maybe</option>
   </select>
-  
-  <label for="adults">Number of Adults</label>
-  <input type="number" id="adults" name="adults" min="0" value="0">
-  
-  <label for="kids">Number of Kids</label>
-  <input type="number" id="kids" name="kids" min="0" value="0">
-  
-  <label for="notes">Notes</label>
-  <textarea id="notes" name="notes" rows="3"></textarea>
-  
-  <button type="submit">Send RSVP</button>
-  
-  <div id="responseMsg"></div>
+
+  <label>Adults</label>
+  <input type="number" name="adults" min="0" value="0">
+
+  <label>Kids</label>
+  <input type="number" name="kids" min="0" value="0">
+
+  <label>Notes</label>
+  <textarea name="notes" rows="3" placeholder="Any special info we should know?"></textarea>
+
+  <button type="submit">🎟 Submit RSVP</button>
 </form>
 
-<script>
-const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbz8B7g14P7GzrU_kVojoVpfrgz0Zi3fOH61LcCbPpzmop_h6Yqsg9gSDPDPofwTb7YJ/exec";
+<div id="responseMsg"></div>
 
-document.getElementById('rsvpForm').addEventListener('submit', function(e) {
-  e.preventDefault();
-  const form = e.target;
-  const formData = new FormData(form);
-  
-  fetch(SCRIPT_URL, { method: 'POST', body: formData })
-    .then(res => res.json())
-    .then(data => {
-      const msg = document.getElementById('responseMsg');
-      if (data.ok) {
-        msg.innerHTML = `<div class="success">${data.message}</div>`;
-        form.reset();
-      } else {
-        msg.innerHTML = `<div class="error">Error: ${data.error || 'Unable to send RSVP'}</div>`;
-      }
-    })
-    .catch(err => {
-      document.getElementById('responseMsg').innerHTML =
-        `<div class="error">Error: ${err}</div>`;
-    });
+<script>
+function rsvpOk(){
+  if (!window.__rsvpSubmitted) return; // skip initial load
+  const msg = document.getElementById('responseMsg');
+  msg.innerHTML = '<div class="success">✅ Thanks! Your RSVP was recorded.</div>';
+  document.getElementById('rsvpForm').reset();
+}
+document.getElementById('rsvpForm').addEventListener('submit', () => {
+  window.__rsvpSubmitted = true;
+  document.getElementById('responseMsg').textContent = 'Sending...';
 });
 </script>
 
 </body>
 </html>
-
-
-
